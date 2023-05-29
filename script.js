@@ -1,6 +1,7 @@
 
 
 var mainServerJson = []
+var surah = 2;
 
 
 var getJSON = function (url, id, callback) {
@@ -33,8 +34,8 @@ function myLoop() {         //  create a loop function
 
 async function featchData() {
 
-    var surah = 1;
-    //var newJson = [];
+    
+    var json = json002;
 
     for (var i = 0, ln = json.length; i < ln; i++) {
         var index = i;
@@ -241,9 +242,10 @@ const example1 = (data, id, child) => new Promise(function (resolve, reject) {
     const para = document.createElement("div");
     para.id = id;
     para.style.color = "#ffffff";
-    para.style.width = "1000px";
-    para.style.height = "1800px";
-    para.style.padding = "40px";
+    para.style.width = "1080px";
+    para.style.height = "1920px";
+    para.style.paddingLeft = "10px";
+    para.style.paddingRight = "10px";
     para.style.textAlign = "center";
     para.style.display = "flex";
     para.style.flexFlow = "column nowrap";
@@ -254,14 +256,14 @@ const example1 = (data, id, child) => new Promise(function (resolve, reject) {
 
         const label1 = document.createElement("label");
         label1.innerHTML = data.arabic;
-        label1.style.fontSize = data.arabic.length > 150 ? "70px" : data.arabic.length > 70 ? "150px" : "200px";
-        label1.style.marginBottom = data.arabic.length > 150 ? "70px" : data.arabic.length > 70 ? "150px" : "200px";
+        label1.style.fontSize = data.arabic.length > 150 ? "70px" : data.arabic.length > 70 ? "100px" : "150px";
+        label1.style.marginBottom = data.arabic.length > 150 ? "70px" : data.arabic.length > 70 ? "100px" : "150px";
         para.appendChild(label1);
 
         const label2 = document.createElement("label");
         label2.innerHTML = data.bengali;
         label2.style.fontSize = data.bengali.length > 150 ? "30px" : data.bengali.length > 70 ? "50px" : "70px";
-        label2.style.marginBottom = data.bengali.length > 150 ? "50px" : data.bengali.length > 70 ? "70px" : "100px";
+        label2.style.marginBottom = data.bengali.length > 150 ? "30px" : data.bengali.length > 70 ? "50px" : "70px";
         para.appendChild(label2);
 
         const label3 = document.createElement("label");
@@ -317,9 +319,10 @@ const example2 = (data, id) => new Promise(function (resolve, reject) {
 var mainMainJSON = [];
 const doStuff = async (newJson) => {
 
-    //console.log('newJson', newJson);
+    console.log('newJson', newJson.length);
+    
     //const listExample = ['a','b','c'];
-    for (let i = 0; i < newJson.length; i++) {
+    for (let i = 0; i < 5; i++) {
 
         //var arabic_img = await example1(newJson[i].data, newJson[i].id);
 
@@ -337,8 +340,10 @@ const doStuff = async (newJson) => {
                 "id": newJson[i].data.wbw[j].id, "mp3": newJson[i].data.wbw[j].ar_mp3,
                 "ar_img": ar_img.split(",")[1]
             });
-            console.log("childs", childs);
+            
         }
+
+        console.log("ayat", newJson[i].id);
 
         mainMainJSON.push({
             "id": newJson[i].id,
@@ -351,7 +356,7 @@ const doStuff = async (newJson) => {
 
     console.log('mainMainJSON', mainMainJSON);
 
-    saveData(mainMainJSON, "001.json")
+    saveData(mainMainJSON, padZero(surah)+".json")
 
     //console.log("The End");
 };
