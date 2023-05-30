@@ -243,15 +243,27 @@ const example1 = (data, id, child) => new Promise(function (resolve, reject) {
     const para = document.createElement("div");
     para.id = id;
     para.style.color = "#ffffff";
-    para.style.width = "750px";
-    para.style.height = "1700px";
+    para.style.width = "700px";
+    para.style.height = "1600px";
+    if (child == true) {
+        para.style.width = "750px";
+        para.style.height = "1700px";
+    }
     para.style.padding = "10px";
+    if (child != true) {
+        para.style.paddingTop = "150px";
+    }
     para.style.textAlign = "center";
     para.style.display = "flex";
     para.style.flexFlow = "column nowrap";
-    para.style.aspectRatio ="9 / 16"
+    para.style.aspectRatio = "9 / 16"
 
-    para.style.justifyContent = "center";
+    if (child == true) {
+        para.style.justifyContent = "center";
+    }
+    else {
+        para.style.justifyContent = "top";
+    }
 
     if (child == true) {
 
@@ -263,32 +275,32 @@ const example1 = (data, id, child) => new Promise(function (resolve, reject) {
 
         const label2 = document.createElement("label");
         label2.innerHTML = data.bengali;
-        label2.style.fontSize = data.bengali.length > 250 ? "15px" : data.bengali.length > 150 ? "30px" : data.bengali.length > 70 ? "50px" : "70px";
+        label2.style.fontSize = data.bengali.length > 250 ? "20px" : data.bengali.length > 150 ? "30px" : data.bengali.length > 70 ? "50px" : "70px";
         label2.style.marginBottom = data.bengali.length > 250 ? "20px" : data.bengali.length > 150 ? "30px" : data.bengali.length > 70 ? "50px" : "70px";
         para.appendChild(label2);
 
         const label3 = document.createElement("label");
         label3.innerHTML = data.english;
-        label3.style.fontSize = data.english.length > 250 ? "15px" : data.english.length > 150 ? "30px" : data.english.length > 70 ? "50px" : "70px";
+        label3.style.fontSize = data.english.length > 250 ? "20px" : data.english.length > 150 ? "30px" : data.english.length > 70 ? "50px" : "70px";
         label3.style.marginBottom = data.english.length > 250 ? "20px" : data.english.length > 150 ? "30px" : data.english.length > 70 ? "50px" : "70px";
         para.appendChild(label3);
     }
     else {
         const label1 = document.createElement("label");
         label1.innerHTML = data.arabic;
-        label1.style.fontSize = data.arabic.length > 250 ? "40px" : data.arabic.length > 150 ? "50px" : data.arabic.length > 70 ? "60px" : "80px";
+        label1.style.fontSize = data.arabic.length > 250 ? "50px" : data.arabic.length > 150 ? "70px" : data.arabic.length > 70 ? "80px" : "100px";
         label1.style.marginBottom = data.arabic.length > 250 ? "50px" : data.arabic.length > 150 ? "70px" : data.arabic.length > 70 ? "80px" : "150px";
         para.appendChild(label1);
 
         const label2 = document.createElement("label");
         label2.innerHTML = data.bengali;
-        label2.style.fontSize = data.bengali.length > 250 ? "20px" : data.bengali.length > 150 ? "30px" : data.bengali.length > 70 ? "40px" : "50px";
+        label2.style.fontSize = data.bengali.length > 250 ? "20px" : data.bengali.length > 150 ? "30px" : data.bengali.length > 70 ? "40px" : "60px";
         label2.style.marginBottom = data.bengali.length > 250 ? "15px" : data.bengali.length > 150 ? "50px" : data.bengali.length > 70 ? "70px" : "100px";
         para.appendChild(label2);
 
         const label3 = document.createElement("label");
         label3.innerHTML = data.english;
-        label3.style.fontSize = data.english.length > 250 ? "20px" : data.english.length > 150 ? "30px" : data.english.length > 70 ? "40px" : "50px";
+        label3.style.fontSize = data.english.length > 250 ? "20px" : data.english.length > 150 ? "30px" : data.english.length > 70 ? "40px" : "60px";
         label3.style.marginBottom = data.english.length > 250 ? "15px" : data.english.length > 150 ? "30px" : data.english.length > 70 ? "50px" : "70px";
         para.appendChild(label3);
     }
@@ -321,7 +333,7 @@ var mainMainJSON = [];
 const doStuff = async (newJson) => {
 
     console.log('newJson', newJson.length);
-    var intial = 16
+    var intial = 25
     //const listExample = ['a','b','c'];
     for (let i = intial; i < intial + 5; i++) {
 
@@ -357,7 +369,7 @@ const doStuff = async (newJson) => {
 
     console.log('mainMainJSON', mainMainJSON);
 
-    saveData(mainMainJSON, padZero(surah) + "_" + (intial + 1) + "-" + (intial + 4) + ".json")
+    saveData(mainMainJSON, padZero(surah) + "_" + (intial + 1) + "-" + (intial + 5) + ".json")
 
     //console.log("The End");
 };
